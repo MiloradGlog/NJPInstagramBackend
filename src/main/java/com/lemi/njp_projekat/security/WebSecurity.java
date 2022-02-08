@@ -15,8 +15,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import java.util.Arrays;
 
-import static com.lemi.njp_projekat.security.SecurityConstants.LOGIN_URL;
-import static com.lemi.njp_projekat.security.SecurityConstants.SIGN_UP_URL;
+import static com.lemi.njp_projekat.security.SecurityConstants.*;
 
 @EnableWebSecurity
 public class WebSecurity extends WebSecurityConfigurerAdapter {
@@ -35,7 +34,8 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
         http.cors().and().csrf().disable()
                 .authorizeRequests()
                 .antMatchers(SIGN_UP_URL).permitAll()
-                .antMatchers(LOGIN_URL).permitAll()//kazemo cemu svaki korisnik moze pristupiti
+                .antMatchers(LOGIN_URL).permitAll()
+                .antMatchers(CHAT_URL).permitAll()//kazemo cemu svaki korisnik moze pristupiti
                 // .antMatchers("/admin/**").hasRole("ADMIN") //ovo bi znacilo da moze pristupiti samo korisnik koji ima rolu ADMIN
                 .anyRequest().authenticated() //na sve druge rute koji nisu navedene dovoljno je da korisnik bude autentifikovan
                 .and()
