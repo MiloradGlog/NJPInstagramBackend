@@ -22,7 +22,7 @@ public class WebSocketController {
 
     @MessageMapping("/send/message")
     public void onReceiveMessage(@Nullable final String message) {
-        System.out.println("Dobio poruku: "+ message);
+        System.out.println("Dobio sledecu poruku: "+ message);
         this.template.convertAndSend("/chat",
                 LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")) + ": " + message);
     }
